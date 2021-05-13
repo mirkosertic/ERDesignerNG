@@ -56,10 +56,14 @@ public class PostgresDataType extends GenericDataTypeImpl {
 			theReturn = theBaseName;
 		} else {
 			String theAppend = patternToType(aAttribute);
+			int p = theBaseName.indexOf("(");
 			if (theAppend.length() == 0) {
-				theReturn = theBaseName;
+				if (p > 0 && theBaseName.charAt(p + 1) == ')') { // remove empty ()
+					theReturn = new StringBuilder(theBaseName).delete(p, p + 2).toString();
+				} else {
+					theReturn = theBaseName;
+				}
 			} else {
-				int p = theBaseName.indexOf("(");
 				if (p > 0) {
 					theReturn = new StringBuilder(theBaseName).insert(p + 1, theAppend).toString();
 				} else {

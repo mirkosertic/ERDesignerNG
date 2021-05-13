@@ -91,10 +91,10 @@ public final class PostgresDialect extends Dialect {
 		registerType(createDataType("smallserial", "", true, Types.SMALLINT));
 		registerType(createDataType("serial", "", true, Types.INTEGER));
 		registerType(createDataType("text", "", Types.VARCHAR));
-		registerType(createDataType("time", "", Types.TIME));
-		registerType(createDataType("time with time zone", "", Types.TIME));
-		registerType(createDataType("timestamp", "", Types.TIMESTAMP));
-		registerType(createDataType("timestamp with time zone", "", Types.TIMESTAMP));
+		registerType(createDataType("time", "[" + GenericDataTypeImpl.SIZE_TOKEN + "]", Types.TIME));
+		registerType(createDataType("time() with time zone", "[" + GenericDataTypeImpl.SIZE_TOKEN + "]", Types.TIME));
+		registerType(createDataType("timestamp", "[" + GenericDataTypeImpl.SIZE_TOKEN + "]", Types.TIMESTAMP));
+		registerType(createDataType("timestamp() with time zone", "[" + GenericDataTypeImpl.SIZE_TOKEN + "]", Types.TIMESTAMP));
 		registerType(createDataType("tsquery", "", Types.OTHER));
 		registerType(createDataType("tsvector", "", Types.OTHER));
 		registerType(createDataType("txid_snapshot", "", Types.OTHER));
